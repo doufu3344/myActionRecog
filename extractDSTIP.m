@@ -70,21 +70,10 @@ for a = 6:info.nact
                 M(depth_filtered < thresh)=0;
             end
             
-            LinearIndex=find(M==1);   
-            [I1,I2,I3]=ind2sub(size(M),LinearIndex);
-            %plot(I2,I1,'r*');  %plot(I2,nrows-I1,'*');
-            %axis([0 ncols 0 nrows]);
-            %clear LinearIndex M;
+            LinearIndex = find(M==1);   
+            [I1,I2,I3] = ind2sub(size(M), LinearIndex);
             
-            for tt = 1:nfrm
-                h = figure;
-                imagesc(depth_ori(:,:,tt));
-                hold on;
-                plot(I2,I1,'y*');  %plot(I2,nrows-I1,'*');
-                axis([0 ncols 0 nrows]);
-                saveas(h,['pic\f_', num2str(tt),'.jpg'],'jpg');
-                close(h);
-            end
+            saveStipPic(depth_ori, I1, I2);
         end
     end
 end

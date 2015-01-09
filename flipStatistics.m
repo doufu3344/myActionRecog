@@ -3,6 +3,7 @@
 %         avgdura --average duration of the flip
 function [nflip, avgdura] = flipStatistics( signal )
     signal = signal-mean(signal);
+    signal(abs(signal)<50) = 0;
     s = sign(signal);
 
     t = filter([1 1], 1, s);
