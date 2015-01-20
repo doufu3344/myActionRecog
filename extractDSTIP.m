@@ -1,9 +1,14 @@
-for a = 6:info.nact
+for a = 1:info.nact
     for s = 1:info.nsbj
         for e = 1:info.ntms
             % Read depth sequence
-            filename = getFilename(info.vidpath, a, s, e);  
+            filename = [info.vidpath, getFilename(a, s, e), '_sdepth.bin'];
+            disp(['extract DSTIP of video: ', getFilename(a, s, e), '_sdepth.bin']);
             depth_ori = readDepthBin(filename);
+            if isempty(depth_ori)
+                continue;
+            end
+            
             [nrows, ncols, nfrm] = size(depth_ori);
             depth_filtered = zeros(nrows, ncols, nfrm);
             if nfrm < 2*stip.gabor_scale+1
@@ -73,7 +78,11 @@ for a = 6:info.nact
             LinearIndex = find(M==1);   
             [I1,I2,I3] = ind2sub(size(M), LinearIndex);
             
-            saveStipPic(depth_ori, I1, I2);
+            dstip = [I1,I2,I3];
+            save([info.dstippath, getFilename(a, s, e), '_dstip.mat'], 'dstip');
+            %saveStipPic(depth_ori, I1, I2);
         end
     end
 end
+
+clearvars -except info stip cuboid
