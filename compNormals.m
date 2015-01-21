@@ -15,6 +15,7 @@ for a = 1:info.nact
             dx = zeros(nrows, ncols, nfrms - 1);
             dy = zeros(nrows, ncols, nfrms - 1);
             dt = zeros(nrows, ncols, nfrms - 1);
+            mag = zeros(nrows, ncols, nfrms - 1);
             
             for f = 1:nfrms-1
                 % smooth
@@ -30,15 +31,17 @@ for a = 1:info.nact
                 dx(:, :, f) = dx(:, :, f) ./ reg;
                 dy(:, :, f) = dy(:, :, f) ./ reg;
                 dt(:, :, f) = dt(:, :, f) ./ reg;
+                mag(:, :, f) = reg;
                 
                 dx(isinf(dx)) = 0; dx(isnan(dx)) = 0;
                 dy(isinf(dy)) = 0; dy(isnan(dy)) = 0;
                 dt(isinf(dt)) = 0; dt(isnan(dt)) = 0;
+                mag(isinf(mag)) = 0; mag(isnan(mag)) = 0;
             end
             
             % save normals and masks
             normalName = [info.normalpath, getFilename(a, s, e), '_norm.mat'];
-            save(normalName, 'dx', 'dy', 'dt');
+            save(normalName, 'dx', 'dy', 'dt', 'mag');
         end
     end
 end

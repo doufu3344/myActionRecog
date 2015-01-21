@@ -1,7 +1,7 @@
 close all; clear; clc;
 
 % set parameters
-% setParams;
+setParams;
 
 % computer the normals
 % compNormals;
