@@ -1,5 +1,4 @@
 close all; clear; clc;
-
 % set parameters
 setParams;
 
@@ -9,4 +8,7 @@ setParams;
 % extract DSTIP
 % extractDSTIP;
 
-extractLowFea;
+% extractLowFea;
+
+% compute dictories;
+compDict;

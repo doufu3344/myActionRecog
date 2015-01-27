@@ -1,13 +1,14 @@
 % data information
-info.nact = 1;
+info.nact = 3;
 info.nsbj = 1;
-info.ntms = 3;
+info.ntms = 1;
 info.train = [1, 3, 5, 7, 9];
 info.test = [2, 4, 6, 8, 10];
 info.vidpath = 'E:\datasets\02 MSR Action 3D Dataset\';
 info.dstippath = 'DSTIP\';
 info.normalpath = 'Normals\';
 info.featurespath = 'Features\';
+info.coefficients = 'Coefficients\';
 
 % dstip information
 stip.npoints = 500; % number of intrest points
@@ -26,3 +27,10 @@ cuboid.xpoints = 3;
 cuboid.ypoints = 3;
 cuboid.temporalscale = 3;
 
+sparse.maxiteration = 100;
+sparse.threshold = 500000;
+sparse.dictdimen = [108 100];
+sparse.lamda = 0.01;
+sparse.yita = 0.01;
+sparse.miu = 0.01;
+sparse.omiga = [7 15 20];

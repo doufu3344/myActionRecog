@@ -85,4 +85,4 @@ for a = 1:info.nact
     end
 end
 
-clearvars -except info stip cuboid
+clearvars -except info stip cuboid sparse
